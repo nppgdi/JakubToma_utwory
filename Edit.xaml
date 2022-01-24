@@ -1,0 +1,22 @@
+﻿<Window x:Class="JakubToma_utwory.Edit"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:JakubToma_utwory"
+        mc:Ignorable="d"
+        Title="Edytuj" Height="304.667" Width="256">
+    <Grid Margin="0,212,136.333,-0.667">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="79*"/>
+            <ColumnDefinition Width="19*"/>
+        </Grid.ColumnDefinitions>
+        <TextBox Text="{Binding songTitle, Mode=TwoWay}" Margin="10,-121,-11,154.666" Grid.ColumnSpan="2"/>
+        <TextBox Text="{Binding songAlbum, Mode=TwoWay}" Margin="10,-159,-11,195.666" Grid.ColumnSpan="2"/>
+        <TextBox Text="{Binding songArtist, Mode=TwoWay}" Margin="10,-199,-11,235.666" Grid.ColumnSpan="2"/>
+        <TextBox Text="{Binding songGenre, Mode=TwoWay}" Margin="10,-78,-11,109.666" Grid.ColumnSpan="2"/>
+
+        <Button Content="Zapisz" Click="OkClick" Margin="10,10,15,18.666" Grid.ColumnSpan="2" />
+        <Button Content="Cancel" Click="CancelClick" Margin="62,11,-121,18.666" Grid.Column="1" />
+    </Grid>
+</Window>
