@@ -61,12 +61,15 @@ namespace JakubToma_utwory
             try
             {
                 cm.ExecuteNonQuery();
-                cnn.Close();
                 MessageBox.Show("Dodano do bazy danych!");
             }
             catch(SqlException ex)
             {
                 MessageBox.Show("Dodanie do bazy nie powiodło się!\n" + ex.Message);
+            }
+            finally
+            {
+                cnn.Close();
             }
         }
 
@@ -78,12 +81,14 @@ namespace JakubToma_utwory
             try
             {
                 cm.ExecuteNonQuery();
-                cnn.Close();
                 MessageBox.Show("Usunięto rekord!");
             }
             catch (SqlException ex)
             {
                 MessageBox.Show("Operacja nie powiodła się! \n" + ex.Message);
+            }
+            finally
+            {
                 cnn.Close();
             }
         }
@@ -105,14 +110,15 @@ namespace JakubToma_utwory
             {
                 cm.ExecuteNonQuery();
                 MessageBox.Show("Zaktualizowano rekord!");
-                cnn.Close();
             }
             catch(SqlException ex)
             {
                 MessageBox.Show("Operacja nie powiodła się! \n" + ex.Message);
+            }
+            finally
+            {
                 cnn.Close();
             }
-
 
 
         }
@@ -122,12 +128,23 @@ namespace JakubToma_utwory
             SqlCommand cm = new SqlCommand("SELECT * FROM genre;", cnn);
             DataTable dt = new DataTable();
             cnn.Open();
-            SqlDataReader dr = cm.ExecuteReader();
-            dt.Load(dr);
-            comboBox.ItemsSource = dt.DefaultView;
-            comboBox.DisplayMemberPath = "genre_name";
-            comboBox.SelectedValuePath = "id";
-            cnn.Close();
+
+            try
+            {
+                SqlDataReader dr = cm.ExecuteReader();
+                dt.Load(dr);
+                comboBox.ItemsSource = dt.DefaultView;
+                comboBox.DisplayMemberPath = "genre_name";
+                comboBox.SelectedValuePath = "id";
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show("Nie można wczytać tabeli! \n" + ex.Message);
+            }
+            finally
+            {
+                cnn.Close();
+            }
         }
     }
 }
