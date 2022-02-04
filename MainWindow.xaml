@@ -5,19 +5,56 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:JakubToma_utwory"
         mc:Ignorable="d"
-        Title="Utwory muzyczne" Height="450" Width="685.556">
-    <Grid Margin="0,0,2.667,-0.333" >
+        Title="Musify" Height="528" Width="516.056" ResizeMode="NoResize" FontSize="14">
 
-        <Button Content="Połącz"  Click="ConnectClick"   Margin="531,314,18,77"/>
-        <Button Content="Właściwości"  Click="PropertiesClick"   Margin="531,272,18,119"/>
-        <Button Content="Dodaj"  Click="AddClick"   Margin="531,358,18,33"/>
-        <DataGrid x:Name="SongsView" HorizontalAlignment="Left" Height="421" VerticalAlignment="Top" Width="505" HorizontalGridLinesBrush="#FF898888" VerticalGridLinesBrush="#FF8D8B8B" AutoGenerateColumns="False">
 
-            <DataGridTextColumn Header="Tytuł" Binding="{Binding songTitle}" />
-            <DataGridTextColumn Header="Album" Binding="{Binding songAlbum}" />
-            <DataGridTextColumn Header="Wykonawca" Binding="{Binding songArtist}" />
-            <DataGridTextColumn Header="Gatunek" Binding="{Binding songGenre}" />
 
+    <Grid Margin="0,0,3,-1" >
+
+
+
+        <Button Content="Edytuj"  Click="PropertiesClick"   Margin="265,10,140,434"/>
+        <Button Content="Dodaj"  Click="AddClick"   Margin="15,10,390,434"/>
+        <Button Content="Usuń"  Click="DeleteClick"   Margin="141,10,264,434"/>
+        <Button Content="Raport"  Click="ReportClick"   Margin="392,10,13,434"/>
+
+        <DataGrid x:Name="SongsView"  AutoGenerateColumns="false" HorizontalAlignment="Left" Height="421" VerticalAlignment="Top" Width="505" HorizontalGridLinesBrush="#FF898888" VerticalGridLinesBrush="#FF8D8B8B" IsReadOnly="True" Margin="0,76,0,0">
+            <DataGrid.RowStyle>
+
+                <Style TargetType="DataGridRow">
+                    <Style.Triggers>
+                        <Trigger Property="IsSelected" Value="True">
+                            <Setter Property="Background" Value="#FFD3CE66"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </DataGrid.RowStyle>
+            <DataGrid.CellStyle>
+                <Style TargetType="DataGridCell">
+                    <Style.Triggers>
+                        <Trigger Property="IsSelected" Value="True">
+                            <Setter Property="Background" Value="#FFD3CE66"/>
+                            <Setter Property="BorderThickness" Value="0" />
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </DataGrid.CellStyle>
+
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Id" Binding="{Binding id}" Visibility="Hidden" />
+                <DataGridTextColumn Header="Tytuł" Binding="{Binding song_title}" />
+                <DataGridTextColumn Header="Wykonawca" Binding="{Binding song_artist}" />
+                <DataGridTextColumn Header="Album" Binding="{Binding song_album}" />
+                <DataGridTextColumn Header="Gatunek" Binding="{Binding song_genre}" />
+                <DataGridTemplateColumn Header="" Width="SizeToCells" IsReadOnly="True">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Image Width="64" Height="64"  Source="{Binding song_img_byte}" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
         </DataGrid>
+
     </Grid>
 </Window>

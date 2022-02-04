@@ -22,14 +22,13 @@ namespace JakubToma_utwory
     /// </summary>
     public partial class MainWindow : Window
     {
-        List<Song> ListSongs = new List<Song>();
         public MainWindow()
         {
             InitializeComponent();
 
-            ListSongs.Add(new Song("In The End", "Hybrid Theory", "Linkin Park", "Alternative"));
+            DBService db = new DBService();
+            db.DbLoad(SongsView);
 
-            SongsView.ItemsSource = ListSongs;
         }
 
 
@@ -38,38 +37,46 @@ namespace JakubToma_utwory
             if (SongsView.SelectedItem != null)
             {
                 Edit win = new Edit();
-                Song song = new Song((Song)SongsView.SelectedItem);
-                win.DataContext = song;
+                DBService db = new DBService();
+                db.DbGetGenres(win.genreBox);
+                string id = ((DataRowView)SongsView.SelectedItem).Row["id"].ToString();
+                win.DataContext = SongsView.SelectedItem;
                 win.ShowDialog();
                 if (win.IsOkPressed)
                 {
-                    int i = ListSongs.IndexOf((Song)SongsView.SelectedItem);
-                    ListSongs[i] = song;
-                    SongsView.Items.Refresh();
+                    db.DbUpdate(id, win.title, win.artist, win.album, win.genreBox.Text, win.filePath.Text);
+                    db.DbLoad(SongsView);
                 }
             }
 
         }
         private void AddClick(object sender, RoutedEventArgs e)
         {
-            Add win2 = new Add();
-            win2.ShowDialog();
+            Edit win = new Edit();
+            DBService db = new DBService();
+            db.DbGetGenres(win.genreBox);
+
+            win.DataContext = SongsView;
+            win.ShowDialog();
+            if (win.IsOkPressed)
+            {
+                db.DbInsert(win.title, win.artist, win.album, win.genreBox.Text, win.filePath.Text);
+                db.DbLoad(SongsView);
+            }
+        }
+        
+        private void DeleteClick(object sender, RoutedEventArgs e)
+        {
+            string id = ((DataRowView)SongsView.SelectedItem).Row["id"].ToString();
+            DBService db = new DBService();
+            db.DbDelete(id);
+            db.DbLoad(SongsView);
         }
 
-        private void ConnectClick(object sender, RoutedEventArgs e)
+        private void ReportClick(object sender, RoutedEventArgs e)
         {
-
-            string connectionString;
-            SqlConnection cnn;
-
-            connectionString = @"Data Source= PC-2\SQLEXPRESS; Initial Catalog=songdb;
-                                Trusted_Connection=True";
-
-            cnn = new SqlConnection(connectionString);
-            cnn.Open();
-            MessageBox.Show("Połączono z bazą danych!");
-
-            cnn.Close();
+            Report win = new Report();
+            win.ShowDialog();
         }
     }
 

@@ -1,4 +1,5 @@
 ﻿using System;
+using Microsoft.Win32;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,6 +12,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.IO;
+
 
 namespace JakubToma_utwory
 {
@@ -32,6 +35,15 @@ namespace JakubToma_utwory
         {
             IsOkPressed = false;
             this.Close();
+        }
+
+        private void BrowseImg(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog dialog = new OpenFileDialog();
+            dialog.ShowDialog();
+            filePath.Text = dialog.FileName;
+            ImageSource imgSrc = new BitmapImage(new Uri(filePath.Text));
+            imageBox.Source = imgSrc;
         }
     }
 }

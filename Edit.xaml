@@ -5,18 +5,22 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:JakubToma_utwory"
         mc:Ignorable="d"
-        Title="Edytuj" Height="304.667" Width="256">
-    <Grid Margin="0,212,136.333,-0.667">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="79*"/>
-            <ColumnDefinition Width="19*"/>
-        </Grid.ColumnDefinitions>
-        <TextBox Text="{Binding songTitle, Mode=TwoWay}" Margin="10,-121,-11,154.666" Grid.ColumnSpan="2"/>
-        <TextBox Text="{Binding songAlbum, Mode=TwoWay}" Margin="10,-159,-11,195.666" Grid.ColumnSpan="2"/>
-        <TextBox Text="{Binding songArtist, Mode=TwoWay}" Margin="10,-199,-11,235.666" Grid.ColumnSpan="2"/>
-        <TextBox Text="{Binding songGenre, Mode=TwoWay}" Margin="10,-78,-11,109.666" Grid.ColumnSpan="2"/>
+        Title="Edytuj" Height="404.667" Width="299.5" ResizeMode="NoResize">
+    <Grid Margin="0,10,2,-2">
 
-        <Button Content="Zapisz" Click="OkClick" Margin="10,10,15,18.666" Grid.ColumnSpan="2" />
-        <Button Content="Cancel" Click="CancelClick" Margin="62,11,-121,18.666" Grid.Column="1" />
+        <TextBox x:Name="title" Text="{Binding song_title, Mode=TwoWay}" Margin="107,3,16,335" TabIndex="1"/>
+        <TextBox x:Name="album" Text="{Binding song_album, Mode=TwoWay}" Margin="107,104,16,234" TabIndex="3"/>
+        <TextBox x:Name="artist" Text="{Binding song_artist, Mode=TwoWay}" Margin="107,54,16,284" RenderTransformOrigin="0.5,0.496" TabIndex="2"/>
+
+        <Button Content="Zapisz" Click="OkClick" Margin="89,325,114,10" />
+        <Button Content="Anuluj" Click="CancelClick" Margin="193,325,10,10" />
+        <Label Content="Tytuł" HorizontalAlignment="Left" Margin="20,3,0,0" VerticalAlignment="Top" Height="26" Width="36"/>
+        <Label Content="Wykonawca" HorizontalAlignment="Left" Margin="20,54,0,0" VerticalAlignment="Top" Height="26" Width="73"/>
+        <Label Content="Album" HorizontalAlignment="Left" Margin="20,104,0,0" VerticalAlignment="Top" Height="26" Width="45"/>
+        <Label Content="Gatunek" HorizontalAlignment="Left" Margin="20,151,0,0" VerticalAlignment="Top" Height="26" Width="54"/>
+        <ComboBox x:Name="genreBox" Text="{Binding song_genre}" HorizontalAlignment="Left" Margin="107,151,0,0" VerticalAlignment="Top" Width="167" Height="26" TabIndex="4"/>
+        <Image x:Name="imageBox" Source="{Binding song_img_byte}" HorizontalAlignment="Left" Height="100" Margin="166,186,0,0" VerticalAlignment="Top" Width="100"/>
+        <TextBox x:Name="filePath" Text="{Binding song_img}" HorizontalAlignment="Left" Height="23" Margin="10,292,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="270"/>
+        <Button Content="Przeglądaj" HorizontalAlignment="Left" Margin="10,251,0,0" VerticalAlignment="Top" Width="75" Click="BrowseImg"/>
     </Grid>
 </Window>
