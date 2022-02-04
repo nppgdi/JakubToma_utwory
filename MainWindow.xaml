@@ -13,10 +13,10 @@
 
 
 
-        <Button Content="Edytuj"  Click="PropertiesClick"   Margin="265,10,140,434"/>
-        <Button Content="Dodaj"  Click="AddClick"   Margin="15,10,390,434"/>
-        <Button Content="Usuń"  Click="DeleteClick"   Margin="141,10,264,434"/>
-        <Button Content="Raport"  Click="ReportClick"   Margin="392,10,13,434"/>
+        <Button Content="Edytuj"  Click="PropertiesClick"   Margin="234,15,180,441"/>
+        <Button Content="Dodaj"  Click="AddClick"   Margin="7,15,407,441"/>
+        <Button Content="Usuń"  Click="DeleteClick"   Margin="121,15,293,441"/>
+        <Button Content="Raport"  Click="ReportClick"   Margin="349,15,65,441"/>
 
         <DataGrid x:Name="SongsView"  AutoGenerateColumns="false" HorizontalAlignment="Left" Height="421" VerticalAlignment="Top" Width="505" HorizontalGridLinesBrush="#FF898888" VerticalGridLinesBrush="#FF8D8B8B" IsReadOnly="True" Margin="0,76,0,0">
             <DataGrid.RowStyle>
@@ -55,6 +55,12 @@
                 </DataGridTemplateColumn>
             </DataGrid.Columns>
         </DataGrid>
+        <Button Click="GithubClick" Margin="458,15,6,441">
+            <StackPanel>
+                <Image Source="Github.png" Height="31" Width="42" />
+            </StackPanel>
+        </Button>
+
 
     </Grid>
 </Window>

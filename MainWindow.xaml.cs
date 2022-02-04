@@ -78,6 +78,11 @@ namespace JakubToma_utwory
             Report win = new Report();
             win.ShowDialog();
         }
+
+        private void GithubClick(object sender, RoutedEventArgs e)
+        {
+            System.Diagnostics.Process.Start("https://github.com/nppgdi/JakubToma_utwory");
+        }
     }
 
 }
