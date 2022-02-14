@@ -13,12 +13,12 @@
 
 
 
-        <Button Content="Edytuj"  Click="PropertiesClick"   Margin="234,15,180,441"/>
+        <Button x:Name="editBtn" Content="Edytuj"  Click="PropertiesClick"   Margin="234,15,180,441"/>
         <Button Content="Dodaj"  Click="AddClick"   Margin="7,15,407,441"/>
         <Button Content="Usuń"  Click="DeleteClick"   Margin="121,15,293,441"/>
         <Button Content="Raport"  Click="ReportClick"   Margin="349,15,65,441"/>
 
-        <DataGrid x:Name="SongsView"  AutoGenerateColumns="false" HorizontalAlignment="Left" Height="421" VerticalAlignment="Top" Width="505" HorizontalGridLinesBrush="#FF898888" VerticalGridLinesBrush="#FF8D8B8B" IsReadOnly="True" Margin="0,76,0,0">
+        <DataGrid x:Name="SongsView"  AutoGenerateColumns="false" HorizontalAlignment="Left" Height="421" VerticalAlignment="Top" Width="505" HorizontalGridLinesBrush="#FF898888" VerticalGridLinesBrush="#FF8D8B8B" IsReadOnly="True" Margin="0,76,0,0" SelectionChanged="SongsView_SelectionChanged">
             <DataGrid.RowStyle>
 
                 <Style TargetType="DataGridRow">

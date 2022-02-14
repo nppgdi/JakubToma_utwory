@@ -26,6 +26,7 @@ namespace JakubToma_utwory
         {
             InitializeComponent();
 
+            editBtn.IsEnabled = false;
             DBService db = new DBService();
             db.DbLoad(SongsView);
 
@@ -82,6 +83,12 @@ namespace JakubToma_utwory
         private void GithubClick(object sender, RoutedEventArgs e)
         {
             System.Diagnostics.Process.Start("https://github.com/nppgdi/JakubToma_utwory");
+        }
+
+
+        private void SongsView_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            editBtn.IsEnabled = true;
         }
     }
 

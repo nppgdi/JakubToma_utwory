@@ -10,7 +10,7 @@
 
         xmlns:local="clr-namespace:JakubToma_utwory" 
         mc:Ignorable="d"
-        Title="Raport" Height="450" Width="671.971" ResizeMode="NoResize">
+        Title="Raport" Height="450" Width="704.929" ResizeMode="NoResize">
     <Grid>
 
         <wfi:WindowsFormsHost VerticalAlignment="Stretch"  Name="winFormsHost" Grid.RowSpan="2" >
